@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Quiz Question Form</title>
+<!--  <link rel="stylesheet" type="text/css" href="styles.css">-->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+</head>
+<body>
+<h1>Quiz Question Form</h1>
+
+<form id="questionForm" th:object="${Question}">
+  <label for="question">Question:</label>
+  <input type="text" id="question" th:field="*{question}" required disabled>
+
+  <label for="options">Options:</label>
+  <textarea id="options" th:field="*{options}" rows="6" required disabled></textarea>
+
+  <label for="category">Category:</label>
+  <select id="category" name="categories" required>
+    <option value="">Select Category</option>
+    <option th:each="category, cats : ${Categories}" th:value="category.name" th:if="" ></option>
+    <!-- Add more category options as needed -->
+  </select>
+  <div th:each="category : *{categories}">
+    <span th:text="${category.}">Category: </span>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<!--<script src="script.js"></script>-->
+</body>
+</html>
